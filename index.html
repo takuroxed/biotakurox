@@ -25,9 +25,29 @@
   </div>
   <!-- Background Elements -->
   <div id="video-background">
-    <video autoplay muted loop id="myVideo"> <!-- Video background -->
-      <source src="./assets/back/default.mp4" type="video/mp4">
+    <video autoplay muted id="myVideo">
+      <source src="./assets/back/1.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
+    </video>
+</div>
+
+<script>
+const video = document.getElementById('myVideo');
+const videoFiles = [
+    './assets/back/1.mp4',
+    './assets/back/2.mp4',
+    './assets/back/3.mp4',
+    './assets/back/4.mp4'
+];
+let currentVideoIndex = 0;
+
+video.addEventListener('ended', () => {
+    currentVideoIndex = (currentVideoIndex + 1) % videoFiles.length; // Cycle through videos
+    video.src = videoFiles[currentVideoIndex];
+    video.load();
+    video.play();
+});
+</script>
     </video>
     <div id="audio-background">
       <audio autoplay loop id="myAudio"> <!-- Audio background -->
